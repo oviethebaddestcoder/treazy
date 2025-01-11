@@ -6,475 +6,590 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"   />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+
+        .cart-animation {
+            animation: cartPop 0.3s ease-in-out;
+        }
+
+        @keyframes cartPop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+
     <title>Learn Tailwind CSS</title>
 
 </head>
 
-<body class="bg-silver-100">
-    <div class="container mx-auto p-5">
-
-        <div class="md:flex md:flex-row md:justify-between text-center text-sm sm:text-base">
-            <div class="flex flex-row justify-center">
-                <div class="bg-gradient-to-r from-purple-400 to-red-400 w-10 h-10 rounded-lg justify-between"></div>
-                <h1 class="text-3xl text-gray-600 ml-2 ">Treazy Hair</h1>
+<body class="bg-gray-50" x-data="{ cartOpen: false, mobileMenu: false }"></body>>
+<!-- Navigation -->
+<nav class="bg-white shadow-lg fixed w-full z-50 ">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-16">
+            <!-- Logo and primary nav -->
+            <div class="flex">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">TREAZY-HAIRS</h1>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:space-x-8">
+                    <a href="#" class="inline-flex items-center px-1 pt-1 text-gray-900 border-b-2 border-indigo-500">
+                        Home
+                    </a>
+                    <a href="#" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                        Products
+                    </a>
+                    <a href="#" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                        Categories
+                    </a>
+                </div>
             </div>
-            <div class="mt-2">
-                <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">Home</a>
-                <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">Shop</a>
-                <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">Blog</a>
-                <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">Contact</a>
-                <a href="#" class="bg-purple-600 text-gray-50 hover:bg-purple-700 p-3 px-3 sm:px-5 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 inline-block" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
+
+            <!-- Cart and mobile menu button -->
+            <div class="flex items-center">
+                <button @click="cartOpen = !cartOpen" class="relative p-2 text-gray-600 hover:text-gray-900"
+                    id="cartButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    Cart (0)
-                </a>
-            </div>
-        </div><!-- Main Navigation -->
+                    <span id="cartCount"
+                        class="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                        0
+                    </span>
+                </button>
 
-        <div class="md:flex md:flex-row mt-20">
-            <div class="md:w-2/5 flex flex-col justify-center items-center">
-                <h2 class="font-serif text-5xl text-gray-600 mb-4 text-center md:self-start md:text-left">Premium Hair
-                    Extensions</h2>
-                <p class="uppercase text-gray-600 tracking-wide text-center md:self-start md:text-left">Enhance your
-                    beauty with our luxurious hair products.</p>
-                <p class="uppercase text-gray-600 tracking-wide text-center md:self-start md:text-left">Simply splendid.
-                </p>
-                <a href="#"
-                    class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-4 px-8 text-gray-50 uppercase text-xl md:self-start my-5">Shop
-                    Now</a>
-            </div>
-            <div class="md:w-3/5">
-                <img src="img3.avif" class="w-full" />
-            </div>
-        </div><!-- Hero sectioin -->
-
-        <div class="my-20">
-            <div class="flex flex-row justify-between my-5">
-                <h2 class="text-3xl">Hair Collections</h2>
-                <a href="#" class="flex flex-row text-lg hover:text-purple-700">
-                    View All
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-5 ml-1" fill="none" viewBox="0 0 24 24"
+                <!-- Mobile menu button -->
+                <button @click="mobileMenu = !mobileMenu" class="md:hidden ml-2 p-2 text-gray-600 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
-                </a>
+                </button>
             </div>
-            <div
-                class="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="IMG700.jpg" class="rounded-tl-lg rounded-tr-lg object-cover" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">Brazilian Remy Human Hair</a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="img55.jpg" class="rounded-tl-lg rounded-tr-lg" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">28-Inch Long Yaki Straight Lace Front Wig</a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="img100.jpg" class="rounded-tl-lg rounded-tr-lg" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">20-Inch Deep Curly Afro Wig</a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="img998.jpg" class="rounded-tl-lg rounded-tr-lg" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">Elegant Deep Wave Frontal</a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- Men's Collection Section -->
-
-
-        <div class="my-20">
-            <div class="flex flex-row justify-between my-5">
-                <h2 class="text-3xl">Exclusive Offers</h2>
-                <a href="#" class="flex flex-row text-lg hover:text-purple-700">
-                    View All
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-5 ml-1" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-            <div
-                class="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="img33.jpg" class="rounded-tl-lg rounded-tr-lg" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">FunkyGirl 180% Density Body-Curls Wig </a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="img90.jpg" class="rounded-tl-lg rounded-tr-lg" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">Elegant Afro Curly Kinky Wig</a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="img66.jpg" class="rounded-tl-lg rounded-tr-lg" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">150% Density 13×4 Lace Front</a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-lg">
-                    <a href="#">
-                        <img src="img88.jpg" class="rounded-tl-lg rounded-tr-lg" />
-                    </a>
-                    <div class="p-5">
-                        <h3><a href="#">Elegant 13×4 Lace Front Wig</a></h3>
-                        <div class="flex flex-row my-3">
-                            <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                        </div>
-                        <div class="flex flex-row my-3">
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Medium</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Small</a>
-                            <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs"
-                                href="#">Fitted</a>
-                        </div>
-                        <div class="flex flex-col xl:flex-row justify-between">
-                            <a class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-pink-600 hover:from-pink-600 hover:to-pink-600 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Add to cart
-                            </a>
-                            <a class="bg-purple-600 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-                                href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                View Details
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div> <!-- Women's Collection Section -->
-
-            <div class="rounded-lg shadow-lg my-20 flex flex-row">
-                <div
-                    class="lg:w-3/5 w-full bg-gradient-to-r from-black text-purple-700 lg:from-black lg:via-purple-900 lg:to-transparent rounded-lg text-gray-100 p-12">
-                    <div class="lg:w-1/2">
-                        <h3 class="text-2xl font-extrabold mb-4">Subscribe to get our offers first</h3>
-                        <p class="mb-4 leading-relaxed">Want to hear from us when we have new offers? Sign up for our
-                            newsletter and we'll email you every time we have new sale offers.</p>
-                        <div>
-                            <input type="email" placeholder="Enter email address"
-                                class="bg-gray-600 text-gray-200 placeholder-gray-400 px-4 py-3 w-full rounded-lg focus:outline-none mb-4" />
-                            <button type="submit" class="bg-red-600 py-3 rounded-lg w-full">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-2/5 w-full lg:flex lg:flex-row hidden">
-                    <img src="sus11.png" class="h-96 bg-white" />
-                </div>
-            </div><!-- Newsletter Section -->
-
-            <div
-                class="border-t-2 border-gray-300 flex flex-col md:flex-row md:justify-between text-center py-5 text-sm">
-                <div class="mb-4">
-                    <a href="#" class="mx-2.5 hover:underline">About</a>
-                    <a href="#" class="mx-2.5 hover:underline">Privacy Policy</a>
-                    <a href="#" class="mx-2.5 hover:underline">Terms of Services</a>
-                </div>
-                <p>&copy; Copyright Reserved 2025</p>
-            </div><!-- Footer Section -->
         </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden" x-show="mobileMenu" x-cloak>
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="#" class="block px-3 py-2 text-base font-medium text-gray-900 bg-gray-50 rounded-md">
+                Home
+            </a>
+            <a href="#"
+                class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md">
+                Products
+            </a>
+            <a href="#"
+                class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md">
+                Categories
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Cart Sidebar -->
+<div x-show="cartOpen" x-cloak class="fixed inset-0 overflow-hidden z-50">
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="cartOpen = false"></div>
+
+        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div class="w-screen max-w-md">
+                <div class="h-full flex flex-col bg-white shadow-xl">
+                    <div class="flex-1 py-6 overflow-y-auto px-4">
+                        <div class="flex items-start justify-between">
+                            <h2 class="text-lg font-medium text-gray-900">Shopping Cart</h2>
+                            <button @click="cartOpen = false" class="ml-3 h-7 flex items-center">
+                                <span class="sr-only">Close panel</span>
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="mt-8" id="cartItems">
+                            <!-- Cart items will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 py-6 px-4">
+                        <div class="flex justify-between text-base font-medium text-gray-900">
+                            <p>Subtotal</p>
+                            <p>$<span id="cartTotal">0.00</span></p>
+                        </div>
+                        <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                        <div class="mt-6">
+                            <a href="#"
+                                class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                                Checkout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Main Navigation -->
+
+<div class=" md:flex md:flex-row mt-20 ">
+    <div class="md:w-2/5 flex flex-col justify-center items-center">
+        <div class="hover:text-sky-200">
+            <h1 class="text-3xl font-bold mb-40">Welcome to MyShop!</h1>
+        </div>
+        <h2 class="font-serif text-5xl text-gray-600 mb-4 text-center md:self-start md:text-left pr-5">
+            Premium Hair
+            Extensions</h2>
+        <p class="uppercase text-gray-600 tracking-wide text-center md:self-start md:text-left">
+            Enhance
+            your
+            beauty with our luxurious hair products.</p>
+        <p class="uppercase text-gray-600 tracking-wide text-center md:self-start md:text-left">
+            Simply
+            splendid.
+        </p>
+        <a href="#"
+            class="bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-4 px-8 text-gray-50 uppercase text-xl md:self-start my-5 items-center">Shop
+            Now</a>
+    </div>
+    <div class="md:w-3/5">
+        <img src="img3.avif" class="w-full" />
+    </div>
+</div>
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 container items-center">
+    <div class="py-8">
+        <h2 class="text-2xl font-bold text-gray-900">Featured Products</h2>
+
+        <!-- Product Grid -->
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="productGrid">
+            <!-- Product cards will be dynamically inserted here -->
+        </div>
+    </div>
+    <script>
+        class Store {
+            constructor() {
+                this.products = [{
+                    id: 1,
+                    name: 'Brazilian Remy Human Hair',
+                    price: 129.99,
+                    image: 'https://img.kwcdn.com/product/fancy/2a0b4fe3-2446-4526-a3c4-dba68750ba5d.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Fitted and Durable Hair'
+                },
+                {
+                    id: 2,
+                    name: 'Yaki Lace-Front',
+                    price: 200.00,
+                    image: 'https://img.kwcdn.com/product/algo_check/auto/84862af90897a2620203ece9424a5c1e_1733909541200.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: '28-inch Long &Straight '
+                },
+                {
+                    id: 3,
+                    name: 'Curly Afro Wig',
+                    price: 140.99,
+                    image: 'https://img.kwcdn.com/product/fancy/ee5aa59b-2321-485e-a990-177e6503ff05.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: '20-inch Deep'
+                },
+                {
+                    id: 4,
+                    name: 'Deep Wave Frontal',
+                    price: 160.99,
+                    image: 'https://img.kwcdn.com/product/fancy/f99bba72-4c8c-44e1-9268-a36190acfe63.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Elegant Wavy'
+                },
+                {
+                    id: 5,
+                    name: 'Lace Front',
+                    price: 140.99,
+                    image: 'https://img.kwcdn.com/product/fancy/ee5aa59b-2321-485e-a990-177e6503ff05.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: '150% Density 13*4'
+                },
+                {
+                    id: 6,
+                    name: 'Funky Body-Curls Wig',
+                    price: 177.99,
+                    image: 'https://img.kwcdn.com/product/fancy/ed5f3cbb-b47a-4f44-a5ed-f2ff76a48a93.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: '180% Density'
+                },
+                {
+                    id: 7,
+                    name: 'Afro Curly-Kinky Wig',
+                    price: 166.99,
+                    image: 'https://img.kwcdn.com/product/fancy/42298dd8-b0ab-4093-84b5-763164a2a046.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Elegantly Curly'
+                },
+                {
+                    id: 8,
+                    name: 'Bob Wig',
+                    price: 140.99,
+                    image: 'https://img.kwcdn.com/product/open/9f35268bc4fc4bfaae73e9df3f641904-goods.jpeg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Short-sleek classic'
+                },
+                {
+                    id: 9,
+                    name: 'Pixie Cut Wig',
+                    price: 57.99,
+                    image: 'https://img.kwcdn.com/product/fancy/351a8b9d-61bb-4447-8ea5-9e9d7af0eb41.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Edgy-layers,Bold'
+                },
+                {
+                    id: 10,
+                    name: 'Straight Wig',
+                    price: 60.99,
+                    image: 'https://img.kwcdn.com/product/fancy/acf0de18-09b1-457e-87aa-3a9db4d26b7b.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Sleek % Smooth'
+                },
+                {
+                    id: 11,
+                    name: 'Water Wave Wig',
+                    price: 99.99,
+                    image: 'https://img.kwcdn.com/product/fancy/b8c417a0-a1ae-4694-bb7b-033cc3d571a9.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Defined & Tight Waves'
+                },
+                {
+                    id: 12,
+                    name: '360-Lace Wig',
+                    price: 70.99,
+                    image: 'https://img.kwcdn.com/product/fancy/12871a88-3040-4bc2-b4e8-abca926e9b0e.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Lace all perimeter structured wig'
+                },
+                {
+                    id: 13,
+                    name: 'U-Part Wig',
+                    price: 190.99,
+                    image: 'https://img.kwcdn.com/product/fancy/c3276762-8634-4d13-a9ae-c5d525dd62cf.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'U shaped Opening'
+                },
+                {
+                    id: 14,
+                    name: 'Glueless Wig',
+                    price: 140.99,
+                    image: 'https://img.kwcdn.com/product/fancy/5fb7d10f-1f8d-479e-980b-74572fee75bc.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Adjustable straps and combs'
+                },
+                {
+                    id: 15,
+                    name: 'Half Wig',
+                    price: 140.99,
+                    image: 'https://img.kwcdn.com/product/fancy/b487f3b2-1a6e-46e8-a4c3-c71a4b910ab8.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Allows natural hair blending'
+                },
+                {
+                    id: 16,
+                    name: 'Body Wave Wig',
+                    price: 200.99,
+                    image: 'https://img.kwcdn.com/product/fancy/796685e9-6a2e-43aa-88e0-8e6314cd234e.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: '100% Nice'
+                },
+                {
+                    id: 17,
+                    name: 'Layered Wig',
+                    price: 24.99,
+                    image: 'https://img.kwcdn.com/product/fancy/01ea6474-6c7b-4e52-ade7-e3d78993d7f3.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Varying Length'
+                },
+                {
+                    id: 18,
+                    name: 'Bang Wigs',
+                    price: 50.99,
+                    image: 'https://img.kwcdn.com/product/fancy/52766a3d-3783-4c46-bea5-f7bcf6f592d3.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Comes with fringes'
+                },
+                {
+                    id: 19,
+                    name: 'Ombre Wig',
+                    price: 123.99,
+                    image: 'https://img.kwcdn.com/product/open/88b37e91ab5e4dd0b40c7f5a83daae2a-goods.jpeg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Color gradient'
+                },
+                {
+                    id: 20,
+                    name: 'Bouncy Curls Wig',
+                    price: 299.99,
+                    image: 'https://img.kwcdn.com/product/fancy/c07888fd-f1ee-4436-b5f8-4d0f4b07e662.jpg?imageView2/2/w/800/q/70/format/webp',
+                    description: 'Springy curls'
+                }
+                ];
+                this.cart = [];
+                this.init();
+            }
+            init() {
+                this.renderProducts();
+                this.renderCart();
+                this.updateCartCount();
+            }
+            renderProducts() {
+                const productGrid = document.getElementById('productGrid');
+                productGrid.innerHTML = this.products.map(product => `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-gray-900">${product.name}</h3>
+                                <p class="mt-1 text-gray-500">${product.description}</p>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-lg font-bold text-gray-900">$${product.price}</span>
+                                    <button 
+                                        onclick="store.addToCart(${product.id})"
+                                        class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+                                    >
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+            }
+            renderCart() {
+                const cartItems = document.getElementById('cartItems');
+                cartItems.innerHTML = this.cart.map(item => `
+                        <div class="flex py-6 border-b border-gray-200">
+                            <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
+                                <img src="${item.image}" alt="${item.name}" class="h-full w-full object-cover">
+                            </div>
+                            <div class="ml-4 flex flex-1 flex-col">
+                                <div>
+                                    <div class="flex justify-between text-base font-medium text-gray-900">
+                                        <h3>${item.name}</h3>
+                                        <p class="ml-4">$${(item.price * item.quantity).toFixed(2)}</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-1 items-end justify-between text-sm">
+                                    <div class="flex items-center gap-2">
+                                        <button 
+                                            onclick="store.updateQuantity(${item.id}, -1)"
+                                            class="text-gray-500 hover:text-gray-700"
+                                        >-</button>
+                                        <span class="text-gray-500">Qty ${item.quantity}</span>
+                                        <button 
+                                            onclick="store.updateQuantity(${item.id}, 1)"
+                                            class="text-gray-500 hover:text-gray-700"
+                                        >+</button>
+                                    </div>
+                                    <button 
+                                        onclick="store.removeFromCart(${item.id})"
+                                        class="font-medium text-indigo-600 hover:text-indigo-500"
+                                    >Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                this.updateCartTotal();
+            }
+            addToCart(productId) {
+                const product = this.products.find(p => p.id === productId);
+                const existingItem = this.cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.cart.push({
+                        ...product,
+                        quantity: 1
+                    });
+                }
+                this.animateCartButton();
+                this.renderCart();
+                this.updateCartCount();
+            }
+            updateQuantity(productId, change) {
+                const item = this.cart.find(item => item.id === productId);
+                if (item) {
+                    item.quantity = Math.max(0, item.quantity + change);
+                    if (item.quantity === 0) {
+                        this.removeFromCart(productId);
+                    } else {
+                        this.renderCart();
+                        this.updateCartCount();
+                    }
+                }
+            }
+            removeFromCart(productId) {
+                this.cart = this.cart.filter(item => item.id !== productId);
+                this.renderCart();
+                this.updateCartCount();
+            }
+            updateCartCount() {
+                const count = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+                document.getElementById('cartCount').textContent = count;
+            }
+            updateCartTotal() {
+                const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                document.getElementById('cartTotal').textContent = total.toFixed(2);
+            }
+            animateCartButton() {
+                const button = document.getElementById('cartButton');
+                button.classList.add('cart-animation');
+                setTimeout(() => button.classList.remove('cart-animation'), 300);
+            }
+        }
+        // Initialize the store
+        const store = new Store();
+    </script>
+
+</main>
+<div class="rounded-lg shadow-lg my-20 flex flex-row">
+    <div
+        class="lg:w-3/5 w-full bg-gradient-to-r from-black text-purple-700 lg:from-black lg:via-purple-900 lg:to-transparent text-white p-12">
+        <div class="lg:w-1/2">
+            <h3 class="text-2xl font-extrabold mb-4">Subscribe to get our offers first
+            </h3>
+            <p class="mb-4 leading-relaxed">Want to hear from us when we have new
+                offers? Sign up
+                for our
+                newsletter and we'll email you every time we have new sale offers.</p>
+            <div>
+                <input type="email" placeholder="Enter email address"
+                    class="bg-gray-600 text-gray-200 placeholder-gray-400 px-4 py-3 w-full rounded-lg focus:outline-none mb-4" />
+                <button type="submit" class="bg-red-600 py-3 rounded-lg w-full">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <div class="lg:w-2/5 w-full lg:flex lg:flex-row hidden">
+        <img src="sus11.png" class="h-96 " />
+    </div>
+
+
+</div>
+<footer class="bg-gray-900 text-gray-300">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Main Footer Content -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white">TREAZY-HAIRS</h3>
+                <ul class="space-y-2">
+                    <li><a href="/about" class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+                    <li><a href="/support" class="hover:text-white transition-colors">Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white">Legal</h3>
+                <ul class="space-y-2">
+                    <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="/cookies" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Links -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white">Connect</h3>
+                <div class="flex space-x-4">
+                    <!-- GitHub -->
+                    <a href="#" class="hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+                            <path
+                                d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="#" class="hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="#" class="hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:contact@example.com" class="hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+            <p>©
+                <script>document.write(new Date().getFullYear())</script> TREAZY-HAIRS. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>
